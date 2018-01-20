@@ -138,3 +138,50 @@ print(addNumber(1, 2))
 long_string = "come at me bro"
 print(long_string[-5:]) # last 5 chars
 print(long_string[:-5]) # up to last 5 chars
+
+print(long_string.find('bro')) # index of start of 'bro'
+print(long_string.replace('bro', 'buddy'))
+string_arr = long_string.split(' ')
+print(string_arr)
+
+space = ' '
+print(space.join(string_arr)) # so much cheese LMAO
+
+# OOP
+
+class Animal: 
+    __name = None
+    __height = 0
+    __weight = 0
+    __sound = None
+
+    def __init__(self, name, height, weight, sound):
+        self.__name = name
+        self.__height = height
+        self.__weight = weight
+        self.__sound = sound
+
+    def set_name(self, name):
+        self.__name = name
+
+    def get_name(self):
+        return self.__name
+
+    def toString(self):
+        return "some animal"
+
+wolf = Animal('bob', 50, 15, 'woof')
+
+print(wolf.toString())
+
+# inheritance
+
+class Dog(Animal):
+    __owner = None
+
+    __init__(self, name, height, weight, sound, owner):
+        super(Dog, self).__init__(name, height, weight, sound)
+        self.__owner = owner
+    # methods can be overidden without any special syntax
+
+
