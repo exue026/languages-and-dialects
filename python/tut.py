@@ -109,4 +109,32 @@ else:
 
 # and, or, and not are logical operators
 
+# looping
 
+for x in range(0, 10): # up to, not including 10
+    print(x)
+
+for item in grocery_list:
+    print(item)
+
+random_num = random.randrange(0, 20)
+
+while (random_num != 15):
+    print(random_num)
+    random_num = random.randrange(0, 20)
+
+# break and continue exist
+
+
+# functions
+
+def addNumber(num1, num2):
+    return num1 + num2
+
+print(addNumber(1, 2))
+
+# more strings
+
+long_string = "come at me bro"
+print(long_string[-5:]) # last 5 chars
+print(long_string[:-5]) # up to last 5 chars
