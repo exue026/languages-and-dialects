@@ -11,6 +11,12 @@ multi-line comments
 */
 
 func main() {
+	//basics()
+	//controlFlow()
+	dataStructs()
+}
+
+func basics() {
 	fmt.Println("Hello, world!")
 
 	// ways to declare a variable
@@ -27,6 +33,14 @@ func main() {
 
 	fmt.Println(firstName + " " + lastName)
 
+	// default values
+
+	var number int
+	var word string
+	var boolean bool
+
+	fmt.Println(number, word, boolean)
+
 	// loops
 
 	// error thrown if round brackets used
@@ -40,7 +54,9 @@ func main() {
 		fmt.Println(i)
 		i++
 	}
+}
 
+func controlFlow() {
 	//if statements
 
 	yourAge := 19
@@ -91,4 +107,94 @@ func main() {
 	default:
 		fmt.Println("some time today")
 	}
+
+	// defer statements defer the execution of functions until the enclosing
+	// function returns
+
+	defer fmt.Println("world")
+	fmt.Println("hello")
+
+	// deferred function calls are pushed onto a stack
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+}
+
+func dataStructs() {
+	//pointers
+	var p *int
+	fmt.Println(p)
+
+	// & generates a pointer to its operand
+	i := 20
+	p = &i
+
+	// * to dereference
+
+	fmt.Println(*p)
+	fmt.Println(p)
+	*p = 21 // change the value of i via the pointer
+
+	// Go has no pointer arithmetic unlike C
+
+	// structs
+	fmt.Println(Point{1, 2})
+	point := Point{1, 2}
+	point.X = 4
+	fmt.Println(point)
+
+	//struct pointers
+
+	ptr := &point
+	ptr.X = 1000 //technically (*ptr).X but language allows for implicit deref
+	fmt.Println(point)
+	fmt.Println(ptr)
+
+	p1 := Point{X: 1}    // Y: 0 implicit
+	p2 := Point{}        // X,Y: 0 implicit
+	ptr1 := &Point{1, 2} // has data type *Point
+	fmt.Println(p1)
+	fmt.Println(p2)
+	fmt.Println(ptr1)
+
+	// arrays: not resizeable
+
+	var words [2]string
+	words[0] = "Hello"
+	words[1] = "World"
+	fmt.Println(words)
+	fmt.Println(words[0], words[1])
+
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
+
+	// a slice is a dynamically-sized flexible view into an array's elements
+
+	var s []int = primes[1:4]
+	fmt.Println(s)
+
+	names := [4]string{
+		"George",
+		"James",
+		"Isaac",
+		"Scott",
+	}
+
+	fmt.Println(names)
+
+	a := names[0:3]
+	b := names[2:]
+	fmt.Println(a, b)
+
+	b[0] = "XXX"
+
+	fmt.Println(a, b)
+}
+
+// structs
+
+type Point struct {
+	X int
+	Y int
 }
