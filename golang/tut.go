@@ -190,6 +190,96 @@ func dataStructs() {
 	b[0] = "XXX"
 
 	fmt.Println(a, b)
+
+	// a slice literal is like an array literal without the length
+
+	nums := []int{1, 2, 3} // creates array then builds slice reference
+	fmt.Println(nums)
+
+	structs := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{-3, false},
+		{99, false},
+	}
+	fmt.Println(structs)
+	fmt.Println(len(structs))
+
+	var randomArray []int
+	if randomArray == nil {
+		fmt.Println(randomArray, "is nil!")
+	}
+
+	// to create dynamically sized arrays
+
+	dynamicArray := make([]int, 5)
+	fmt.Println(dynamicArray)
+
+	matrix := [][]int{
+		[]int{0, 0, 0},
+		[]int{0, 0, 0},
+		[]int{0, 0, 0},
+	}
+	fmt.Println(matrix)
+
+	dynamicArray = []int{}
+	fmt.Println(dynamicArray == nil) // false
+	dynamicArray = append(dynamicArray, -20, -25, -30)
+	fmt.Println(dynamicArray)
+
+	for index, value := range dynamicArray {
+		fmt.Println(index, value)
+	}
+
+	// maps
+
+	var hashtable map[string]Vertex
+	fmt.Println(hashtable == nil)
+
+	hashtable = make(map[string]Vertex)
+	hashtable["Bell Labs"] = Vertex{40, -74}
+	fmt.Println(hashtable)
+
+	hashtable = map[string]Vertex{
+		"Bell Lab": {40, -74},
+		"Google":   {38, -122},
+	}
+	hashtable["Google"] = Vertex{0, 0}
+	delete(hashtable, "Google")
+	fmt.Println(hashtable)
+
+	if elem, ok := hashtable["Bell Lab"]; ok {
+		fmt.Println(elem, "is present!")
+	}
+
+	// first class functions
+
+	add := func(x int, y int) int {
+		return x + y
+	}
+	fmt.Println(add(1, 2))
+	compute := func(x int, y int, op func(int, int) int) int {
+		return op(x, y)
+	}
+	fmt.Println(compute(0, 4, add))
+
+	// closures!
+
+	makeRunOnce := func() func() {
+		once := false
+		return func() {
+			if !once {
+				fmt.Println("Hello, World!")
+			}
+			once = true
+		}
+	}
+
+	runOnce := makeRunOnce()
+	runOnce()
+	runOnce()
 }
 
 // structs
@@ -197,4 +287,9 @@ func dataStructs() {
 type Point struct {
 	X int
 	Y int
+}
+
+type Vertex struct {
+	lat  int
+	long int
 }
