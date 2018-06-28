@@ -130,6 +130,9 @@ func dataStructs() {
 	i := 20
 	p = &i
 
+	x := []string{}
+	fmt.Println(len(x))
+
 	// * to dereference
 
 	fmt.Println(*p)
