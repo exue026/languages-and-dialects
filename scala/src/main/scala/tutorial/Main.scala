@@ -125,6 +125,31 @@ object Main {
     val PointOnXAxis = new PointWithOptionalParams(4)
     println(origin)
     println(PointOnXAxis)
+    // Example of named parameters
+    val PointOnYAxis = new PointWithOptionalParams(y = 3)
+    println(PointOnYAxis)
+
+    // Private members and getter/setter syntax
+    // Members are public by default so you need the private keyword
+    // You need getters and setters
+    class PrivatePoint {
+      private var x = 0
+      private var y = 0
+
+      def getX: Int = x
+      def getY: Int = y
+
+      def setX(newVal: Int): Unit = {
+        x = newVal
+      }
+
+      def setY(newVal: Int): Unit = {
+        y = newVal
+      }
+    }
+
+    // Parameters without val or var are private values
+    class PrivatePointShortForm(x: Int, y: Int)
   }
 }
 
