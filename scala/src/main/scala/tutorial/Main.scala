@@ -6,7 +6,9 @@ object Main {
     //conditionals()
     //loops()
     //classes()
-    traits()
+    //traits()
+    //tuples()
+    mixins()
     // generics()
     // operator overloading()
     // concurrency()
@@ -184,7 +186,88 @@ object Main {
     println(iterator.next())
 
     // Polymorphism fully supported
+    trait Pet {
+      val name: String
+    }
 
+    class Cat(val name: String) extends Pet
+    class Dog(val name: String) extends Pet
+
+    val animalList = List(new Cat("kitty"), new Dog("ebb"), new Dog("flow"))
+    for (animal <- animalList) {
+      println(animal.name)
+    }
+  }
+
+  def tuples(): Unit = {
+    // Usually, we prefer a case class over a tuple
+    // Which one takes up more memory?
+    // Tuples are immutable
+    val ingredient = ("Sugar", 25)
+    println(ingredient)
+    println(ingredient._1)
+    println(ingredient._2)
+
+    // Destructuring tuple data
+    val (name, quantity) = ingredient
+    println(name)
+    println(quantity)
+  }
+
+  def mixins(): Unit = {
+    // What?? I thought traits were like ABCs in C++
+    // but now we have abstract classes?
+
+    // Mixins ARE traits that are used to compose a class
+    abstract class A {
+      val message: String
+    }
+
+    class B extends A {
+      val message = "I'm an instance of class B"
+    }
+
+    // Nani
+    trait C extends A {
+      def loudMessage: String = message.toUpperCase()
+    }
+
+    // NANI
+    class D extends B with C
+
+    val d = new D
+    println(d.message)
+    println(d.loudMessage)
+
+    // classes can only have one superclass but many mixins
+
+    // Iterator example
+    // Class has an abstract type T
+    abstract class AbstractIterator {
+      type T
+      def hasNext: Boolean
+      def next: T
+    }
+
+    class StringIterator(s: String) extends AbstractIterator {
+      type T = Char
+      private var i = 0
+      def hasNext: Boolean = i < s.length
+      def next: Char = {
+        val ch = s charAt i
+        i += 1
+        ch
+      }
+    }
+
+    trait RichIterator extends AbstractIterator {
+      def foreach(f: T => Unit): Unit = while (hasNext) f(next)
+    }
+
+    class RichStringIter extends StringIterator("Scala") with RichIterator
+
+    val richStringIter = new RichStringIter
+    richStringIter foreach println
   }
 }
 
