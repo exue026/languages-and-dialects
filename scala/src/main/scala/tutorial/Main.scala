@@ -5,7 +5,11 @@ object Main {
     //variablesAndExpressions()
     //conditionals()
     //loops()
-    classes()
+    //classes()
+    traits()
+    // generics()
+    // operator overloading()
+    // concurrency()
   }
 
   def variablesAndExpressions(): Unit = {
@@ -150,6 +154,37 @@ object Main {
 
     // Parameters without val or var are private values
     class PrivatePointShortForm(x: Int, y: Int)
+  }
+
+  def traits(): Unit = {
+    // Traits in Scala are like ABCs in C++ or Interfaces in Java
+    // Classes and objects can extends traits but traits themselves can't be instantiated
+
+    trait mostBasicTrait
+
+    // Sneak preview of generics
+    trait Iterator[A] {
+      def hasNext: Boolean
+      def next(): A
+    }
+
+    class IntIterator(to: Int) extends Iterator[Int] {
+      private var current = 0
+      override def hasNext: Boolean = current < to
+      override def next(): Int = {
+        if (hasNext) {
+          val t = current
+          current += 1
+          t
+        } else 0
+      }
+    }
+    val iterator = new IntIterator(10)
+    println(iterator.next())
+    println(iterator.next())
+
+    // Polymorphism fully supported
+
   }
 }
 
