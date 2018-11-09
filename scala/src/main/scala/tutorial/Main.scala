@@ -11,7 +11,8 @@ object Main {
     // mixins()
     // higherOrderFunctions()
     // currying()
-    caseClasses()
+    // caseClasses()
+    patternMatching()
     // generics()
     // operator overloading()
     // concurrency()
@@ -320,6 +321,65 @@ object Main {
     val copiedMessaged = originalMessage.copy()
     println(originalMessage)
     println(copiedMessaged)
+  }
+
+  def patternMatching(): Unit = {
+    import scala.util.Random
+    val x: Int = Random.nextInt(10)
+    val result = x match {
+      case 0 => "zero"
+      case 1 => "one"
+      case _ => "many"
+    }
+    println(result)
+
+    // matching on case classes
+    abstract class Notification
+    case class Email(title: String, body: String) extends Notification
+    case class SMS(caller: String, message: String) extends Notification
+
+    def showNotification(notification: Notification): String = {
+      notification match {
+        case Email(title, body) => s"You got an email with title: $title and body: $body"
+        case SMS(caller, message) => s"You got an SMS from $caller with message: $message"
+      }
+    }
+
+    val someSMS = SMS("Ethan", "Hello, world!")
+    val someEmail = SMS("Hello, world!", "Test")
+    println(showNotification(someSMS))
+    println(showNotification(someEmail))
+
+    // Pattern guards
+    def showImportantNotifications
+    (notification: Notification,
+      importInfo: Seq[String]
+    ): String = notification match {
+        case Email(title, body) if importInfo.contains(title) =>
+          s"You got an email with title: $title and body: $body"
+        case SMS(caller, message) if importInfo.contains(caller) =>
+          s"You got an SMS from $caller with message: $message"
+        case _ => ""
+      }
+
+    val importantInfo = Seq("Ethan")
+    println(showImportantNotifications(someSMS, importantInfo))
+    println(showImportantNotifications(someEmail, importantInfo))
+
+    // Matching on type only
+    abstract class Device
+    case class Phone(model: String) extends Device {
+      def screenOff = "Turning screen off"
+    }
+
+    case class Computer(model: String) extends Device {
+      def screenSaverOn = "Turning screen saver on"
+    }
+
+    def goIdle(device: Device): String = device match {
+      case p: Phone => p.screenOff
+      case c: Computer => c.screenSaverOn
+    }
   }
 }
 
