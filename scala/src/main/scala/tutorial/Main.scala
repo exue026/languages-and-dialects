@@ -10,7 +10,8 @@ object Main {
     // tuples()
     // mixins()
     // higherOrderFunctions()
-    currying()
+    // currying()
+    caseClasses()
     // generics()
     // operator overloading()
     // concurrency()
@@ -302,6 +303,23 @@ object Main {
     println(filter(nums, modN(3)))
   }
 
+  def caseClasses(): Unit = {
+    // the structs of Scala! Good for modelling immutable data
+    // By default, parameters are public vals
+    case class Book(isbn: String)
+    val frankenstein = Book("12345678")
 
+    // Case classes are compared by value
+    case class Message(body: String)
+    val myMessage = Message("Hello, world!")
+    val hisMessage = Message("Hello, world!")
+    println(myMessage == hisMessage)
+
+    // shallow copying with optional changing of arguments
+    val originalMessage = Message("Hello, world!")
+    val copiedMessaged = originalMessage.copy()
+    println(originalMessage)
+    println(copiedMessaged)
+  }
 }
 
