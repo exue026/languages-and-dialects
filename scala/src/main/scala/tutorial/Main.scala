@@ -2,14 +2,15 @@ package tutorial
 
 object Main {
   def main(args: Array[String]): Unit = {
-    //variablesAndExpressions()
-    //conditionals()
-    //loops()
-    //classes()
-    //traits()
-    //tuples()
+    // variablesAndExpressions()
+    // conditionals()
+    // loops()
+    // classes()
+    // traits()
+    // tuples()
     // mixins()
-    higherOrderFunctions()
+    // higherOrderFunctions()
+    currying()
     // generics()
     // operator overloading()
     // concurrency()
@@ -282,6 +283,25 @@ object Main {
     val decorator = new Decorator("[", "]")
     println(apply(decorator.layout, 7))
   }
-}
 
+  def currying(): Unit = {
+    // Methods can take multiple parameter lists
+    // A method called with a fewer number of parameters will return a function
+    // that takes the missing parameters as arguments
+    def filter(xs: List[Int], p: Int => Boolean): List[Int] =
+      if (xs.isEmpty) xs
+      else if (p(xs.head)) xs.head :: filter(xs.tail, p)
+      else filter(xs.tail, p)
+
+    // In JS, this is equivalent to:
+    // const modN = (n) => (x) => (x % n) == 0
+    def modN(n: Int)(x: Int) = ((x % n) == 0)
+
+    val nums = List(1,2,3,4,5,6,7,8)
+    println(filter(nums, modN(2)))
+    println(filter(nums, modN(3)))
+  }
+
+
+}
 
