@@ -8,7 +8,8 @@ object Main {
     //classes()
     //traits()
     //tuples()
-    mixins()
+    // mixins()
+    higherOrderFunctions()
     // generics()
     // operator overloading()
     // concurrency()
@@ -268,6 +269,18 @@ object Main {
 
     val richStringIter = new RichStringIter
     richStringIter foreach println
+  }
+
+  def higherOrderFunctions(): Unit = {
+    // by definition, higher order functions either take in or return other functions
+    def apply(f: Int => String, v: Int) = f(v)
+
+    class Decorator(left: String, right: String) {
+      def layout[A](x: A): String = left + x.toString() + right
+    }
+
+    val decorator = new Decorator("[", "]")
+    println(apply(decorator.layout, 7))
   }
 }
 
