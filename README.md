@@ -1,23 +1,9 @@
 # languages-and-dialects
 
-This is where I learn, experiment with, and explore new languages, technologies, and frameworks. So far, this is the structure of the repo:
+This is where I learn, experiment with, and explore new languages, technologies, and frameworks.
 
-`python`:
-* basic tutorial
-* TODO: Django
+## What's already done
+`python`, `golang`, `scala`
 
-`C++`:
-* basic tutorial
-* implementing ADTs
-
-`Swift`:
-* basic tutorial
-
-`Kotlin`:
-* basic tutorial
-
-`Scala`:
-* basic tutorial
-
-`JavaScript`:
-* basic tutorial
+## Up next
+`C++`
