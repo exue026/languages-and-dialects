@@ -4,6 +4,14 @@ This sub-repo is for learning/experimenting with the C++ language, using the C++
 
 ## Contents
 
+* Smart pointers
+* Design patterns
+* Templates
+* STL
+* Multi-threading
+* Boost
+* Testing
+
 ## Links
 
 [Impala Confluence Page](https://cwiki.apache.org/confluence/display/IMPALA/Impala+Home)
