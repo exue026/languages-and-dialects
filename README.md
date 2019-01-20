@@ -1,9 +1,11 @@
 # languages-and-dialects
 
-This is where I learn, experiment with, and explore new languages, technologies, and frameworks.
+This repo is where I learn, experiment with, and explore new languages, technologies, and frameworks.
 
-## What's already done
-`python`, `golang`, `scala`
+## Languages
 
-## Up next
-`C++`
+* C
+* C++
+* Python
+* Golang
+* Scala
