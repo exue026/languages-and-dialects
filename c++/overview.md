@@ -4,6 +4,7 @@ This sub-repo is for learning/experimenting with the C++ language, using the C++
 
 ## Contents
 
+* C++ core guidelines
 * Smart pointers
 * Design patterns
 * Templates
