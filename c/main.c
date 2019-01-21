@@ -99,6 +99,12 @@ void arrays() {
     }
 }
 
+void pointers() {
+    // good practice to make a pointer a nullptr if not in use
+    int* nullptr = NULL;
+    printf("value of ptr pointing to null is %d\n", nullptr);
+}
+
 int main() {
     // single line comment
 
@@ -116,7 +122,9 @@ int main() {
 
    // printf("max of 1 and 3 is %d\n", max(1, 3));
 
-   arrays();
+   // arrays();
+
+   pointers();
 }
 
 int max(int a, int b) {
