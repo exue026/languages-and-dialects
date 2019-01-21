@@ -81,7 +81,22 @@ void loops() {
 int max(int, int);
 
 void arrays() {
+    int nums[10];
+    for (int i = 0; i < 10; ++i) {
+        printf("%d\n", nums[i]);
+        nums[i] = i;
+    }
 
+    int* pointer = nums;
+    for (int i = 0; i < 10; ++i) {
+        printf("%d\n", *pointer);
+        pointer += 1;
+    }
+
+    *(nums + 4) = -100;
+    for (int i = 0; i < 10; ++i) {
+        printf("%d\n", nums[i]);
+    }
 }
 
 int main() {
