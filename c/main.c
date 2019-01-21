@@ -44,6 +44,46 @@ void operators() {
     printf("the value of b is : %d \n", b);
 }
 
+void conditionals() {
+    int a = 100;
+    int b = 200;
+    if (a == 100) {
+        if (b == 100) {
+            printf("a is 100 and b is 100\n");
+        } else {
+            printf("a is 100 and b is not 100\n");
+        }
+    } else {
+        printf("a is not 100\n");
+    }
+
+    char coopEvaluation = 'E';
+    switch (coopEvaluation) {
+        case 'O':
+            printf("you did outstanding!");
+            break;
+        case 'E':
+            printf("you got excellent");
+            break;
+        default:
+            printf("you did poorly");
+    }
+}
+
+void loops() {
+    #define LENGTH 10
+    for (int i = 0; i < LENGTH; ++i) {
+        printf("%d\n", i + 1);
+    }
+}
+
+// this is a function declaration
+int max(int, int);
+
+void arrays() {
+
+}
+
 int main() {
     // single line comment
 
@@ -55,5 +95,15 @@ int main() {
    printf("printing to the console \n");
 
    // datatypes();
-   operators();
+   // operators();
+   // conditionals();
+   // loops();
+
+   // printf("max of 1 and 3 is %d\n", max(1, 3));
+
+   arrays();
+}
+
+int max(int a, int b) {
+    return a >= b ? a : b;
 }
