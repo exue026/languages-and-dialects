@@ -23,6 +23,25 @@ void datatypes() {
 
     printf("the constant LENGTH has value : %d \n", LENGTH);
     printf("the constant SPECIAL_CHAR has value : %c \n", SPECIAL_CHAR);
+
+    // using const keyword
+
+    const int X = 500;
+    const int Y = 600;
+    int area;
+    
+    area = X * Y;
+    printf("area is : %d \n", area);
+}
+
+void operators() {
+    // bitwise operations include: <<, >>, &, |, ^
+
+    int a = 4;
+    printf("value of a is %d and address of a is %p \n", a, &a);
+
+    int b = a > 4 ? a : -1;
+    printf("the value of b is : %d \n", b);
 }
 
 int main() {
@@ -35,5 +54,6 @@ int main() {
 
    printf("printing to the console \n");
 
-   datatypes();
+   // datatypes();
+   operators();
 }
