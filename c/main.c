@@ -102,7 +102,13 @@ void arrays() {
 void pointers() {
     // good practice to make a pointer a nullptr if not in use
     int* nullptr = NULL;
-    printf("value of ptr pointing to null is %d\n", nullptr);
+    printf("value of ptr pointing to null is %p\n", nullptr);
+
+    if (nullptr) {
+        printf("pointer points to something");
+    } else {
+        printf("pointer points to nothing");
+    }
 }
 
 int main() {
